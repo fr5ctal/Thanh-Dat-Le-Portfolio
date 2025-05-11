@@ -174,4 +174,66 @@ p {
 .nav:hover,
 .close:hover {
   color: #ccc;
+
+/* --- MOBILE STYLES --- */
+@media (max-width: 768px) {
+  header h1 {
+    font-size: 48px;
+  }
+
+  header h1 span {
+    font-size: 24px;
+  }
+
+  .tab-button {
+    font-size: 16px;
+    padding: 8px 16px;
+  }
+
+  .tab-content {
+    padding: 1rem 0.5rem;
+  }
+
+  p {
+    font-size: 14px;
+    max-width: 100%;
+  }
+
+  .image-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .overlay img {
+    max-width: 80%;
+    max-height: 80%;
+  }
+}
+
+/* --- SMALL MOBILE STYLES --- */
+@media (max-width: 480px) {
+  header h1 {
+    font-size: 36px;
+  }
+
+  header h1 span {
+    font-size: 20px;
+  }
+
+  .tab-button {
+    font-size: 14px;
+    padding: 6px 12px;
+  }
+
+  p {
+    font-size: 12px;
+  }
+
+  .image-row {
+    grid-template-columns: 1fr;
+  }
+
+  .overlay img {
+    max-width: 90%;
+    max-height: 90%;
+  }
 }
