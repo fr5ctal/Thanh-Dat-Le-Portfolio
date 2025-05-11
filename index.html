@@ -39,34 +39,120 @@
       height: auto;
       cursor: pointer;
     }
+
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.9);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      flex-direction: column;
+    }
+
+    .overlay img {
+      max-height: 90%;
+      max-width: 90%;
+    }
+
+    .nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      color: white;
+      font-size: 2rem;
+      border: none;
+      cursor: pointer;
+    }
+
+    .nav.prev {
+      left: 20px;
+    }
+
+    .nav.next {
+      right: 20px;
+    }
+
+    .close {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      font-size: 2rem;
+      color: white;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
 
   <header>
     <h1><span>Thanh-Dat Le</span> Portfolio</h1>
-
     <div class="tab">
-      <button class="tab-button active" onclick="openTab('Home')">Home</button>
-      <button class="tab-button" onclick="openTab('Street')">Street Work</button>
-      <button class="tab-button" onclick="openTab('Event')">Events Work</button>
-      <button class="tab-button" onclick="openTab('Contact')">My Contact</button>
+      <button class="tab-button active" onclick="openTab('Home', event)">Home</button>
+      <button class="tab-button" onclick="openTab('The In-Between', event)">The In-Between</button>
+      <button class="tab-button" onclick="openTab('Event', event)">Events Work</button>
+      <button class="tab-button" onclick="openTab('Contact', event)">My Contact</button>
     </div>
   </header>
 
   <section id="Home" class="tab-content active">
     <main>
-      <p>I capture the in-between — spontaneous street scenes, family moments, and intimate events. This collection reflects what I've noticed, felt, and chosen to hold onto.</p>
       <div class="image-row row-3">
-        <img src="images/photo1.jpg" alt="Photo 1" onclick="openImage(0)" />
-        <img src="images/photo2.jpg" alt="Photo 2" onclick="openImage(1)" />
-        <img src="images/photo3.jpg" alt="Photo 3" onclick="openImage(2)" />
+        <img src="homeimages/photo1.jpg" alt="Photo 1" data-src="homeimages/photo1.jpg" onclick="openImage(this)" />
+        <img src="homeimages/photo2.jpg" alt="Photo 2" data-src="homeimages/photo2.jpg" onclick="openImage(this)" />
+        <img src="homeimages/photo3.jpg" alt="Photo 3" data-src="homeimages/photo3.jpg" onclick="openImage(this)" />
       </div>
+      <div class="image-row row-2">
+        <img src="homeimages/photo4.jpg" alt="Photo 4" data-src="homeimages/photo4.jpg" onclick="openImage(this)" />
+        <img src="homeimages/photo5.jpg" alt="Photo 5" data-src="homeimages/photo5.jpg" onclick="openImage(this)" />
+      </div>
+      <div class="image-row row-3">
+        <img src="homeimages/photo6.jpg" alt="Photo 6" data-src="homeimages/photo6.jpg" onclick="openImage(this)" />
+        <img src="homeimages/photo7.jpg" alt="Photo 7" data-src="homeimages/photo7.jpg" onclick="openImage(this)" />
+        <img src="homeimages/photo8.jpg" alt="Photo 8" data-src="homeimages/photo8.jpg" onclick="openImage(this)" />
+      </div>
+      <!--
+      <div class="image-row row-2">
+        <img src="homeimages/photo9.jpg" alt="Photo 9" data-src="homeimages/photo9.jpg" onclick="openImage(this)" />
+        <img src="homeimages/photo10.jpg" alt="Photo 10" data-src="homeimages/photo10.jpg" onclick="openImage(this)" />
+      </div>
+      <div class="image-row row-3">
+        <img src="homeimages/photo11.jpg" alt="Photo 11" data-src="homeimages/photo11.jpg" onclick="openImage(this)" />
+        <img src="homeimages/photo12.jpg" alt="Photo 12" data-src="homeimages/photo12.jpg" onclick="openImage(this)" />
+        <img src="homeimages/photo13.jpg" alt="Photo 13" data-src="homeimages/photo13.jpg" onclick="openImage(this)" />
+      </div>
+      <div class="image-row row-2">
+        <img src="homeimages/photo14.jpg" alt="Photo 14" data-src="homeimages/photo14.jpg" onclick="openImage(this)" />
+        <img src="homeimages/photo15.jpg" alt="Photo 15" data-src="homeimages/photo15.jpg" onclick="openImage(this)" />
+      </div>
+      <div class="image-row row-2">
+        <img src="homeimages/photo16.jpg" alt="Photo 14" data-src="homeimages/photo16.jpg" onclick="openImage(this)" />
+        <img src="homeimages/photo17.jpg" alt="Photo 15" data-src="homeimages/photo17.jpg" onclick="openImage(this)" />
+      </div>
+      -->
     </main>
   </section>
 
-  <section id="Street" class="tab-content">
-    <p>Scenes from my daily walks through Boston. Street photography captured on the go — one candid moment at a time.</p>
+  <section id="The In-Between" class="tab-content">
+    <p>Scenes from my daily walks through Boston — unposed street moments, small gestures, and everyday life as it unfolds. A collection of images that felt worth pausing for.</p>
+    <!--
+    <div class="image-row row-4">
+      <img src="theinbetweenimages/photo1.jpg" alt="Photo 1" data-src="theinbetweenimages/photo1.jpg" onclick="openImage(this)" />
+      <img src="theinbetweenimages/photo2.jpg" alt="Photo 2" data-src="theinbetweenimages/photo2.jpg" onclick="openImage(this)" />
+      <img src="theinbetweenimages/photo3.jpg" alt="Photo 3" data-src="theinbetweenimages/photo3.jpg" onclick="openImage(this)" />
+      <img src="theinbetweenimages/photo4.jpg" alt="Photo 4" data-src="theinbetweenimages/photo4.jpg" onclick="openImage(this)" />
+    </div>
+
+    <div class="image-row row-2">
+    <img src="theinbetweenimages/photo5.jpg" alt="Photo 5" data-src="theinbetweenimages/photo5.jpg" onclick="openImage(this)" />
+    <img src="theinbetweenimages/photo6.jpg" alt="Photo 6" data-src="theinbetweenimages/photo6.jpg" onclick="openImage(this)" />
+    </div>
+    -->
   </section>
 
   <section id="Event" class="tab-content">
@@ -74,8 +160,7 @@
   </section>
 
   <div id="Contact" class="tab-content">
-    <h2>Contact</h2>
-    <img src="images/photo4.jpg" alt="Photo of Thanh-Dat Le" style="max-width: 200px; border-radius: 10px; margin-bottom: 1rem;" />
+    <img src="mycontactimages/profile.jpg" alt="Photo of Thanh-Dat Le" style="max-width: 200px; border-radius: 10px; margin-bottom: 1rem;" />
     <p>Hi, I'm <strong>Thanh-Dat Le</strong>, a photographer based in <strong>Boston</strong>.</p>
     <p>I’m always open to collaborations, new projects, or just connecting over a shared love of photography.</p>
     <p>
@@ -84,27 +169,22 @@
     </p>
   </div>
 
-
-  <!-- Overlay for full-size images -->
-  <div id="overlay" class="overlay" onclick="closeImage(event)" style="display: none;">
-    <span class="close" onclick="closeImage(event)">&times;</span>
+  <div id="overlay" class="overlay" onclick="closeImage()">
+    <span class="close" onclick="closeImage()">&times;</span>
     <img id="overlay-img" src="" alt="Full view" onclick="event.stopPropagation()" />
     <button class="nav prev" onclick="prevImage(event)">&#10094;</button>
     <button class="nav next" onclick="nextImage(event)">&#10095;</button>
   </div>
 
   <script>
-    const images = [
-      "images/photo1.jpg",
-      "images/photo2.jpg",
-      "images/photo3.jpg"
-    ];
-
+    let allImages = [];
     let currentIndex = 0;
 
-    function openImage(index) {
-      currentIndex = index;
-      document.getElementById("overlay-img").src = images[currentIndex];
+    function openImage(element) {
+      allImages = Array.from(document.querySelectorAll('.tab-content.active img'));
+      currentIndex = allImages.indexOf(element);
+      const src = element.getAttribute("data-src");
+      document.getElementById("overlay-img").src = src;
       document.getElementById("overlay").style.display = "flex";
     }
 
@@ -114,14 +194,14 @@
 
     function nextImage(event) {
       event.stopPropagation();
-      currentIndex = (currentIndex + 1) % images.length;
-      document.getElementById("overlay-img").src = images[currentIndex];
+      currentIndex = (currentIndex + 1) % allImages.length;
+      document.getElementById("overlay-img").src = allImages[currentIndex].getAttribute("data-src");
     }
 
     function prevImage(event) {
       event.stopPropagation();
-      currentIndex = (currentIndex - 1 + images.length) % images.length;
-      document.getElementById("overlay-img").src = images[currentIndex];
+      currentIndex = (currentIndex - 1 + allImages.length) % allImages.length;
+      document.getElementById("overlay-img").src = allImages[currentIndex].getAttribute("data-src");
     }
 
     document.addEventListener("keydown", function (event) {
@@ -132,19 +212,18 @@
         } else if (event.key === "ArrowLeft") {
           prevImage(event);
         } else if (event.key === "Escape") {
-          closeImage({ target: document.getElementById("overlay") });
+          closeImage();
         }
       }
     });
 
-    function openTab(tabName) {
+    function openTab(tabName, evt) {
       const contents = document.querySelectorAll('.tab-content');
       const buttons = document.querySelectorAll('.tab-button');
       contents.forEach((c) => c.classList.remove('active'));
       buttons.forEach((b) => b.classList.remove('active'));
-
       document.getElementById(tabName).classList.add('active');
-      event.currentTarget.classList.add('active');
+      evt.currentTarget.classList.add('active');
     }
   </script>
 </body>
