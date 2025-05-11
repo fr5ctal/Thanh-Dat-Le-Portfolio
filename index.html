@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thanh-Dat Le Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .tab {
+      margin-top: 1rem;
+    }
+
+    .tab-button {
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      background-color: #eee;
+      border: none;
+      outline: none;
+      margin-right: 5px;
+      font-weight: bold;
+    }
+
+    .tab-button.active {
+      background-color: #333;
+      color: white;
+    }
+
+    .tab-content {
+      display: none;
+      margin-top: 1rem;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    .image-row img {
+      max-width: 100%;
+      height: auto;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1><span>Thanh-Dat Le</span> Portfolio</h1>
+
+    <div class="tab">
+      <button class="tab-button active" onclick="openTab('Home')">Home</button>
+      <button class="tab-button" onclick="openTab('Street')">Street Work</button>
+      <button class="tab-button" onclick="openTab('Event')">Events Work</button>
+      <button class="tab-button" onclick="openTab('Contact')">My Contact</button>
+    </div>
+  </header>
+
+  <section id="Home" class="tab-content active">
+    <main>
+      <p>I capture the in-between — spontaneous street scenes, family moments, and intimate events. This collection reflects what I've noticed, felt, and chosen to hold onto.</p>
+      <div class="image-row row-3">
+        <img src="images/photo1.jpg" alt="Photo 1" onclick="openImage(0)" />
+        <img src="images/photo2.jpg" alt="Photo 2" onclick="openImage(1)" />
+        <img src="images/photo3.jpg" alt="Photo 3" onclick="openImage(2)" />
+      </div>
+    </main>
+  </section>
+
+  <section id="Street" class="tab-content">
+    <p>Scenes from my daily walks through Boston. Street photography captured on the go — one candid moment at a time.</p>
+  </section>
+
+  <section id="Event" class="tab-content">
+    <p>Photos from my friend’s wedding and family gatherings — full of laughter, connection, and the calm that lingers between the big moments.</p>
+  </section>
+
+  <div id="Contact" class="tab-content">
+    <h2>Contact</h2>
+    <img src="images/photo4.jpg" alt="Photo of Thanh-Dat Le" style="max-width: 200px; border-radius: 10px; margin-bottom: 1rem;" />
+    <p>Hi, I'm <strong>Thanh-Dat Le</strong>, a photographer based in <strong>Boston</strong>.</p>
+    <p>I’m always open to collaborations, new projects, or just connecting over a shared love of photography.</p>
+    <p>
+      Instagram: <a href="https://instagram.com/thanhdatleca" target="_blank">@thanhdatleca</a><br />
+      Email: <a href="mailto:thanhdatleca@gmail.com">thanhdatleca@gmail.com</a>
+    </p>
+  </div>
+
+
+  <!-- Overlay for full-size images -->
+  <div id="overlay" class="overlay" onclick="closeImage(event)" style="display: none;">
+    <span class="close" onclick="closeImage(event)">&times;</span>
+    <img id="overlay-img" src="" alt="Full view" onclick="event.stopPropagation()" />
+    <button class="nav prev" onclick="prevImage(event)">&#10094;</button>
+    <button class="nav next" onclick="nextImage(event)">&#10095;</button>
+  </div>
+
+  <script>
+    const images = [
+      "images/photo1.jpg",
+      "images/photo2.jpg",
+      "images/photo3.jpg"
+    ];
+
+    let currentIndex = 0;
+
+    function openImage(index) {
+      currentIndex = index;
+      document.getElementById("overlay-img").src = images[currentIndex];
+      document.getElementById("overlay").style.display = "flex";
+    }
+
+    function closeImage() {
+      document.getElementById("overlay").style.display = "none";
+    }
+
+    function nextImage(event) {
+      event.stopPropagation();
+      currentIndex = (currentIndex + 1) % images.length;
+      document.getElementById("overlay-img").src = images[currentIndex];
+    }
+
+    function prevImage(event) {
+      event.stopPropagation();
+      currentIndex = (currentIndex - 1 + images.length) % images.length;
+      document.getElementById("overlay-img").src = images[currentIndex];
+    }
+
+    document.addEventListener("keydown", function (event) {
+      const overlay = document.getElementById("overlay");
+      if (overlay.style.display === "flex") {
+        if (event.key === "ArrowRight") {
+          nextImage(event);
+        } else if (event.key === "ArrowLeft") {
+          prevImage(event);
+        } else if (event.key === "Escape") {
+          closeImage({ target: document.getElementById("overlay") });
+        }
+      }
+    });
+
+    function openTab(tabName) {
+      const contents = document.querySelectorAll('.tab-content');
+      const buttons = document.querySelectorAll('.tab-button');
+      contents.forEach((c) => c.classList.remove('active'));
+      buttons.forEach((b) => b.classList.remove('active'));
+
+      document.getElementById(tabName).classList.add('active');
+      event.currentTarget.classList.add('active');
+    }
+  </script>
+</body>
+</html>
